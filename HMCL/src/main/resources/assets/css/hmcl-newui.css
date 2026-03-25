@@ -1,7 +1,6 @@
 /*
- * HMCL New UI Style - Modern Dark Gray/Brown Theme
- * Based on the design shown in the screenshot
- * Note: Original Monet theme colors are preserved
+ * HMCL New UI Style - Modern Theme with Monet Theme Variables
+ * Uses theme variables to adapt to user's theme settings
  */
 
 /*******************************************************************************
@@ -21,25 +20,25 @@
     -fx-background-color: transparent;
 }
 
-/* Gray background for sidebar */
+/* Gray background for sidebar - uses inverse surface for dark effect */
 .gray-background {
-    -fx-background-color: #3A3632;
+    -fx-background-color: -monet-inverse-surface;
 }
 
 /* Left sidebar navigation area */
 .jfx-decorator-drawer {
-    -fx-background-color: #3A3632;
+    -fx-background-color: -monet-inverse-surface;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Navigation Sidebar                                                          *
+ * Navigation Sidebar - Dark theme for contrast                                *
  *                                                                             *
  ******************************************************************************/
 
 /* Sidebar container */
 .advanced-list-box-content {
-    -fx-background-color: #3A3632;
+    -fx-background-color: -monet-inverse-surface;
     -fx-padding: 12 8 12 8;
     -fx-spacing: 4;
 }
@@ -50,10 +49,11 @@
 }
 
 .class-title Text {
-    -fx-fill: #A09890;
+    -fx-fill: -monet-inverse-on-surface;
     -fx-font-size: 11px;
     -fx-font-weight: bold;
     -fx-letter-spacing: 1;
+    -fx-opacity: 0.7;
 }
 
 /* Navigation item */
@@ -65,11 +65,13 @@
 }
 
 .advanced-list-item:hover > .rippler-container > .container {
-    -fx-background-color: #4A4642;
+    -fx-background-color: -monet-inverse-surface;
+    -fx-opacity: 0.8;
 }
 
 .advanced-list-item:selected > .rippler-container > .container {
-    -fx-background-color: #5A5652;
+    -fx-background-color: -monet-primary-container;
+    -fx-opacity: 0.3;
 }
 
 /* Two line list item in navigation */
@@ -78,34 +80,31 @@
 }
 
 .advanced-list-item > .rippler-container > .container > .two-line-list-item > .first-line > .title {
-    -fx-text-fill: #E6D9C8;
+    -fx-text-fill: -monet-inverse-on-surface;
     -fx-font-size: 14px;
 }
 
 .advanced-list-item > .rippler-container > .container > .two-line-list-item > HBox > .subtitle {
-    -fx-text-fill: #A09890;
+    -fx-text-fill: -monet-inverse-on-surface;
     -fx-font-size: 11px;
+    -fx-opacity: 0.7;
 }
 
-.advanced-list-item:hover > .rippler-container > .container > .two-line-list-item > .first-line > .title {
-    -fx-text-fill: #FFFFFF;
-}
-
+.advanced-list-item:hover > .rippler-container > .container > .two-line-list-item > .first-line > .title,
 .advanced-list-item:selected > .rippler-container > .container > .two-line-list-item > .first-line > .title {
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: -monet-inverse-on-surface;
     -fx-font-weight: bold;
 }
 
 .advanced-list-item .svg {
-    -fx-fill: #A09890;
+    -fx-fill: -monet-inverse-on-surface;
+    -fx-opacity: 0.7;
 }
 
-.advanced-list-item:hover .svg {
-    -fx-fill: #E6D9C8;
-}
-
+.advanced-list-item:hover .svg,
 .advanced-list-item:selected .svg {
-    -fx-fill: #FFFFFF;
+    -fx-fill: -monet-inverse-on-surface;
+    -fx-opacity: 1;
 }
 
 /* Navigation drawer item */
@@ -119,31 +118,32 @@
 }
 
 .navigation-drawer-item:hover > .rippler-container > .container {
-    -fx-background-color: #4A4642;
+    -fx-background-color: -monet-inverse-surface;
+    -fx-opacity: 0.8;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Title Bar                                                                   *
+ * Title Bar - Uses theme primary container color                             *
  *                                                                             *
  ******************************************************************************/
 
-/* Title bar background */
+/* Title bar background - uses theme primary container */
 .jfx-tool-bar {
-    -fx-background-color: #E6D9C8;
+    -fx-background-color: -monet-primary-container;
     -fx-min-height: 36px;
     -fx-max-height: 36px;
     -fx-pref-height: 36px;
 }
 
 .jfx-tool-bar.background {
-    -fx-background-color: #E6D9C8;
+    -fx-background-color: -monet-primary-container;
 }
 
 /* Title bar text */
 .jfx-tool-bar Label,
 .jfx-tool-bar .jfx-decorator-title {
-    -fx-text-fill: #333333;
+    -fx-text-fill: -monet-on-primary-container;
     -fx-font-size: 14px;
 }
 
@@ -157,11 +157,12 @@
 }
 
 .jfx-tool-bar .jfx-decorator-button:hover {
-    -fx-background-color: #D0C5B4;
+    -fx-background-color: -monet-on-primary-container;
+    -fx-opacity: 0.1;
 }
 
 .jfx-tool-bar .jfx-decorator-button .svg {
-    -fx-fill: #555555;
+    -fx-fill: -monet-on-primary-container;
 }
 
 /* Window buttons container */
@@ -170,16 +171,17 @@
 }
 
 .jfx-decorator-button:hover {
-    -fx-background-color: #D0C5B4;
+    -fx-background-color: -monet-on-primary-container;
+    -fx-opacity: 0.1;
 }
 
 .jfx-decorator-button .svg {
-    -fx-fill: #555555;
+    -fx-fill: -monet-on-primary-container;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Launch Button (Start Game)                                                  *
+ * Launch Button (Start Game) - Uses theme primary container                   *
  *                                                                             *
  ******************************************************************************/
 
@@ -192,42 +194,41 @@
     -fx-padding: 0;
 }
 
-/* Main launch button */
+/* Main launch button - uses theme primary container */
 .launch-pane > .jfx-button.launch-button {
     -fx-max-height: 56px;
     -fx-min-height: 56px;
     -fx-max-width: 200px;
     -fx-min-width: 200px;
-    -fx-background-color: #6A5D50;
+    -fx-background-color: -monet-primary-container;
     -fx-background-radius: 12px;
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0.15, 0, 3);
 }
 
 .launch-pane > .jfx-button.launch-button:hover {
-    -fx-background-color: #7A6D60;
+    -fx-background-color: -monet-primary;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.18, 0, 4);
 }
 
 .launch-pane > .jfx-button.launch-button:pressed {
-    -fx-background-color: #5A4D40;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 6, 0.1, 0, 2);
 }
 
 .launch-pane > .jfx-button.launch-button .jfx-rippler {
-    -jfx-rippler-fill: #8A7D70;
+    -jfx-rippler-fill: -monet-on-primary-container;
 }
 
 .launch-pane > .jfx-button.launch-button,
 .launch-pane > .jfx-button.launch-button * {
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: -monet-on-primary-container;
     -fx-font-size: 16px;
     -fx-font-weight: 600;
 }
 
 /* Launch button graphic (icon) */
 .launch-pane > .jfx-button.launch-button .svg {
-    -fx-fill: #FFFFFF;
+    -fx-fill: -monet-on-primary-container;
 }
 
 /* Menu button (dropdown arrow) */
@@ -237,11 +238,12 @@
     -fx-max-height: 56px;
     -fx-min-height: 56px;
     -fx-background-radius: 0 12px 12px 0;
-    -fx-background-color: #5A4D40;
+    -fx-background-color: -monet-primary;
 }
 
 .launch-pane > .jfx-button.menu-button:hover {
-    -fx-background-color: #6A5D50;
+    -fx-background-color: -monet-primary;
+    -fx-opacity: 0.9;
 }
 
 /* Version label in launch button */
@@ -250,7 +252,7 @@
 }
 
 .launch-pane > .jfx-button.launch-button Label {
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: -monet-on-primary-container;
 }
 
 .launch-pane > .jfx-button.launch-button Label:first {
@@ -261,20 +263,21 @@
 .launch-pane > .jfx-button.launch-button Label:last {
     -fx-font-size: 12px;
     -fx-font-weight: normal;
-    -fx-text-fill: #CCCCCC;
+    -fx-text-fill: -monet-on-primary-container;
+    -fx-opacity: 0.8;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Cards and Dialogs                                                           *
+ * Cards and Dialogs - Uses theme surface colors                              *
  *                                                                             *
  ******************************************************************************/
 
 /* Card style */
 .card {
-    -fx-background-color: rgba(245, 240, 235, 0.95);
+    -fx-background-color: -monet-surface-container-high;
     -fx-background-radius: 8;
-    -fx-border-color: #DDD;
+    -fx-border-color: -monet-outline-variant;
     -fx-border-width: 1;
     -fx-border-radius: 8;
     -fx-padding: 16;
@@ -283,39 +286,39 @@
 
 /* Dialog layout */
 .jfx-dialog-layout {
-    -fx-background-color: rgba(245, 240, 235, 0.98);
+    -fx-background-color: -monet-surface-container-high;
     -fx-background-radius: 12;
     -fx-padding: 24;
-    -fx-border-color: #DDD;
+    -fx-border-color: -monet-outline-variant;
     -fx-border-width: 1;
     -fx-border-radius: 12;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 20, 0.25, 0, 5);
 }
 
 .jfx-layout-heading {
-    -fx-text-fill: #333333;
+    -fx-text-fill: -monet-on-surface;
     -fx-font-size: 18px;
     -fx-font-weight: bold;
 }
 
 .jfx-layout-body Text {
-    -fx-fill: #555555;
+    -fx-fill: -monet-on-surface-variant;
     -fx-font-size: 14px;
     -fx-line-spacing: 1.6;
 }
 
 /* Dialog buttons */
 .dialog-accept {
-    -fx-text-fill: #3A7CB0;
+    -fx-text-fill: -monet-primary;
     -fx-font-weight: 600;
 }
 
 .dialog-cancel {
-    -fx-text-fill: #777777;
+    -fx-text-fill: -monet-on-surface-variant;
 }
 
 .dialog-error {
-    -fx-text-fill: #D34336;
+    -fx-text-fill: -monet-error;
 }
 
 /*******************************************************************************
@@ -325,19 +328,19 @@
  ******************************************************************************/
 
 .bubble {
-    -fx-background-color: rgba(245, 240, 235, 0.95);
+    -fx-background-color: -monet-surface-container-high;
     -fx-background-radius: 8;
-    -fx-border-color: #DDD;
+    -fx-border-color: -monet-outline-variant;
     -fx-border-width: 1;
 }
 
 .bubble > HBox > .two-line-list-item > .first-line > .title,
 .bubble > HBox > .two-line-list-item > HBox > .subtitle {
-    -fx-text-fill: #333333;
+    -fx-text-fill: -monet-on-surface;
 }
 
 .bubble .svg {
-    -fx-fill: #555555;
+    -fx-fill: -monet-on-surface-variant;
 }
 
 /*******************************************************************************
@@ -353,110 +356,114 @@
 
 .scroll-bar:vertical .thumb,
 .scroll-bar:horizontal .thumb {
-    -fx-background-color: rgba(160, 152, 144, 0.5);
+    -fx-background-color: -monet-surface-variant;
     -fx-background-radius: 4;
 }
 
 .scroll-bar:vertical .thumb:hover,
 .scroll-bar:horizontal .thumb:hover {
-    -fx-background-color: rgba(160, 152, 144, 0.7);
+    -fx-background-color: -monet-on-surface-variant;
+    -fx-opacity: 0.5;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Text Fields and Inputs                                                      *
+ * Text Fields and Inputs - Theme surface colors                               *
  *                                                                             *
  ******************************************************************************/
 
 .jfx-text-field,
 .jfx-password-field,
 .jfx-text-area {
-    -fx-background-color: #F5F0EB;
+    -fx-background-color: -monet-surface-container-highest;
     -fx-background-radius: 8;
-    -fx-border-color: #D0C5B4;
+    -fx-border-color: -monet-outline-variant;
     -fx-border-radius: 8;
     -fx-border-width: 1;
-    -fx-text-fill: #333333;
-    -fx-prompt-text-fill: #999999;
+    -fx-text-fill: -monet-on-surface;
+    -fx-prompt-text-fill: -monet-on-surface-variant;
 }
 
 .jfx-text-field:focused,
 .jfx-password-field:focused,
 .jfx-text-area:focused {
-    -fx-border-color: #8B7355;
+    -fx-border-color: -monet-primary;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Buttons                                                                     *
+ * Buttons - Uses theme primary colors                                        *
  *                                                                             *
  ******************************************************************************/
 
 .jfx-button-raised {
-    -fx-background-color: #8B7355;
+    -fx-background-color: -monet-primary;
     -fx-background-radius: 8;
 }
 
 .jfx-button-raised .jfx-rippler {
-    -jfx-rippler-fill: #A09080;
+    -jfx-rippler-fill: -monet-on-primary;
 }
 
 .jfx-button-raised,
 .jfx-button-raised * {
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: -monet-on-primary;
     -fx-font-size: 14px;
     -fx-font-weight: 500;
 }
 
 .jfx-button-raised:hover {
-    -fx-background-color: #9B8365;
+    -fx-background-color: -monet-primary;
+    -fx-opacity: 0.9;
 }
 
 .jfx-button-raised:pressed {
-    -fx-background-color: #7B6345;
+    -fx-opacity: 0.8;
 }
 
 /* Secondary button */
 .jfx-button-border {
     -fx-background-color: transparent;
-    -fx-border-color: #8B7355;
+    -fx-border-color: -monet-primary;
     -fx-border-radius: 8;
 }
 
 .jfx-button-border,
 .jfx-button-border * {
-    -fx-text-fill: #8B7355;
+    -fx-text-fill: -monet-primary;
 }
 
 .jfx-button-border:hover {
-    -fx-background-color: rgba(139, 115, 85, 0.1);
+    -fx-background-color: -monet-primary;
+    -fx-opacity: 0.1;
 }
 
 /*******************************************************************************
  *                                                                             *
- * List Items                                                                  *
+ * List Items - Theme colors                                                  *
  *                                                                             *
  ******************************************************************************/
 
 .list-cell,
 .jfx-list-cell {
     -fx-background-color: transparent;
-    -fx-text-fill: #333333;
+    -fx-text-fill: -monet-on-surface;
 }
 
 .list-cell:hover,
 .jfx-list-cell:hover {
-    -fx-background-color: rgba(139, 115, 85, 0.1);
+    -fx-background-color: -monet-secondary-container;
+    -fx-opacity: 0.3;
 }
 
 .list-cell:selected,
 .jfx-list-cell:selected {
-    -fx-background-color: rgba(139, 115, 85, 0.2);
+    -fx-background-color: -monet-secondary-container;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Table View                                                                  *
+ * Table View - Theme colors                                                  *
  *                                                                             *
  ******************************************************************************/
 
@@ -465,180 +472,180 @@
 }
 
 .table-row-cell {
-    -fx-background-color: #F5F0EB;
+    -fx-background-color: -monet-surface-container;
 }
 
 .table-row-cell:odd {
-    -fx-background-color: #EBE6DF;
+    -fx-background-color: -monet-surface-container-high;
 }
 
 .table-row-cell:selected {
-    -fx-background-color: rgba(139, 115, 85, 0.3);
+    -fx-background-color: -monet-secondary-container;
 }
 
 .table-cell {
-    -fx-text-fill: #333333;
+    -fx-text-fill: -monet-on-surface;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Combo Box                                                                   *
+ * Combo Box - Theme colors                                                   *
  *                                                                             *
  ******************************************************************************/
 
 .jfx-combo-box {
-    -fx-background-color: #F5F0EB;
+    -fx-background-color: -monet-surface-container-highest;
     -fx-background-radius: 8;
-    -fx-border-color: #D0C5B4;
+    -fx-border-color: -monet-outline-variant;
     -fx-border-radius: 8;
 }
 
 .jfx-combo-box .text {
-    -fx-fill: #333333;
+    -fx-fill: -monet-on-surface;
 }
 
 .combo-box-popup .list-view {
-    -fx-background-color: #F5F0EB;
-    -fx-border-color: #D0C5B4;
+    -fx-background-color: -monet-surface-container;
+    -fx-border-color: -monet-outline-variant;
 }
 
 .combo-box-popup .list-view .jfx-list-cell {
-    -fx-background-color: #F5F0EB;
-    -fx-text-fill: #333333;
+    -fx-background-color: -monet-surface-container;
+    -fx-text-fill: -monet-on-surface;
 }
 
 .combo-box-popup .list-view .list-cell:hover {
-    -fx-background-color: rgba(139, 115, 85, 0.1);
+    -fx-background-color: -monet-secondary-container;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Tooltip                                                                     *
+ * Tooltip - Uses theme inverse surface                                        *
  *                                                                             *
  ******************************************************************************/
 
 .tooltip {
-    -fx-background-color: #3A3632;
+    -fx-background-color: -monet-inverse-surface;
     -fx-background-radius: 6;
     -fx-padding: 8 12;
 }
 
 .tooltip .text {
-    -fx-fill: #E6D9C8;
+    -fx-fill: -monet-inverse-on-surface;
     -fx-font-size: 12px;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Hyperlinks                                                                  *
+ * Hyperlinks - Theme primary                                                 *
  *                                                                             *
  ******************************************************************************/
 
 .hyperlink {
-    -fx-text-fill: #3A7CB0;
+    -fx-text-fill: -monet-primary;
     -fx-underline: false;
 }
 
 .hyperlink:hover {
-    -fx-text-fill: #2A6CA0;
+    -fx-text-fill: -monet-primary;
     -fx-underline: true;
 }
 
 .hyperlink:visited {
-    -fx-text-fill: #3A7CB0;
+    -fx-text-fill: -monet-primary;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Progress Bar                                                                *
+ * Progress Bar - Theme primary                                               *
  *                                                                             *
  ******************************************************************************/
 
 .jfx-progress-bar > .track {
-    -fx-background-color: #E6D9C8;
+    -fx-background-color: -monet-secondary-container;
     -fx-background-radius: 4;
 }
 
 .jfx-progress-bar > .bar {
-    -fx-background-color: #8B7355;
+    -fx-background-color: -monet-primary;
     -fx-background-radius: 4;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Slider                                                                      *
+ * Slider - Theme primary                                                     *
  *                                                                             *
  ******************************************************************************/
 
 .jfx-slider .track {
-    -fx-background-color: #E6D9C8;
+    -fx-background-color: -monet-secondary-container;
     -fx-background-radius: 4;
 }
 
 .jfx-slider .thumb {
-    -fx-background-color: #8B7355;
+    -fx-background-color: -monet-primary;
 }
 
 .jfx-slider .colored-track {
-    -fx-background-color: #8B7355;
+    -fx-background-color: -monet-primary;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Check Box                                                                   *
+ * Check Box - Theme primary                                                  *
  *                                                                             *
  ******************************************************************************/
 
 .jfx-check-box {
-    -fx-text-fill: #333333;
-    -jfx-checked-color: #8B7355;
+    -fx-text-fill: -monet-on-surface;
+    -jfx-checked-color: -monet-primary;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Radio Button                                                                *
+ * Radio Button - Theme colors                                                *
  *                                                                             *
  ******************************************************************************/
 
 .jfx-radio-button {
-    -fx-text-fill: #333333;
-    -jfx-selected-color: #8B7355;
-    -jfx-unselected-color: #999999;
+    -fx-text-fill: -monet-on-surface;
+    -jfx-selected-color: -monet-primary;
+    -jfx-unselected-color: -monet-on-surface-variant;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Toggle Button                                                               *
+ * Toggle Button - Theme primary                                              *
  *                                                                             *
  ******************************************************************************/
 
 .jfx-toggle-button {
-    -jfx-toggle-color: #8B7355;
-    -jfx-untoggle-color: #CCCCCC;
+    -jfx-toggle-color: -monet-primary;
+    -jfx-untoggle-color: -monet-on-surface-variant;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Snackbar                                                                    *
+ * Snackbar - Uses theme inverse surface                                      *
  *                                                                             *
  ******************************************************************************/
 
 .jfx-snackbar-content {
-    -fx-background-color: #3A3632;
+    -fx-background-color: -monet-inverse-surface;
     -fx-background-radius: 8;
 }
 
 .jfx-snackbar-toast {
-    -fx-text-fill: #E6D9C8;
+    -fx-text-fill: -monet-inverse-on-surface;
 }
 
 .jfx-snackbar-action {
-    -fx-text-fill: #8B7355;
+    -fx-text-fill: -monet-primary;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Announcement Card                                                           *
+ * Announcement Card                                                          *
  *                                                                             *
  ******************************************************************************/
 
@@ -647,134 +654,135 @@
 }
 
 .announcement .title {
-    -fx-text-fill: #333333;
+    -fx-text-fill: -monet-on-surface;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
 
 .announcement Text {
-    -fx-fill: #555555;
+    -fx-fill: -monet-on-surface-variant;
     -fx-font-size: 13px;
 }
 
 .announcement .hyperlink {
-    -fx-fill: #3A7CB0;
+    -fx-fill: -monet-primary;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Spinner                                                                     *
+ * Spinner - Theme primary                                                   *
  *                                                                             *
  ******************************************************************************/
 
 .jfx-spinner .arc {
-    -fx-stroke: #8B7355;
+    -fx-stroke: -monet-primary;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Memory Status Bar                                                           *
+ * Memory Status Bar                                                          *
  *                                                                             *
  ******************************************************************************/
 
 .memory-status-bar .track {
-    -fx-background-color: #E6D9C8;
+    -fx-background-color: -monet-secondary-container;
 }
 
 .memory-status-bar .memory-used {
-    -fx-fill: #8B7355;
+    -fx-fill: -monet-primary;
 }
 
 .memory-status-bar .memory-allocate {
-    -fx-fill: rgba(139, 115, 85, 0.5);
+    -fx-fill: -monet-primary;
+    -fx-opacity: 0.5;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Log Window                                                                  *
+ * Log Window                                                                 *
  *                                                                             *
  ******************************************************************************/
 
 .log-window {
-    -fx-background-color: #F5F0EB;
+    -fx-background-color: -monet-surface-container;
 }
 
 .log-window .jfx-button {
-    -fx-text-fill: #333333;
+    -fx-text-fill: -monet-on-surface;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Game Crash Window                                                           *
+ * Game Crash Window                                                          *
  *                                                                             *
  ******************************************************************************/
 
 .game-crash-window {
-    -fx-background-color: #F5F0EB;
+    -fx-background-color: -monet-surface-container;
 }
 
 .game-crash-window .crash-reason-text-flow Text {
-    -fx-fill: #333333;
+    -fx-fill: -monet-on-surface;
 }
 
 .game-crash-window .crash-reason-text-flow .hyperlink {
-    -fx-fill: #3A7CB0;
+    -fx-fill: -monet-primary;
 }
 
 /*******************************************************************************
  *                                                                             *
- * HTML Renderer                                                               *
+ * HTML Renderer - Theme colors                                               *
  *                                                                             *
  ******************************************************************************/
 
 .html-hyperlink {
-    -fx-fill: #3A7CB0;
+    -fx-fill: -monet-primary;
 }
 
 .html-h1 {
     -fx-font-size: 22;
-    -fx-fill: #333333;
+    -fx-fill: -monet-on-surface;
 }
 
 .html-h2 {
     -fx-font-size: 20;
-    -fx-fill: #333333;
+    -fx-fill: -monet-on-surface;
 }
 
 .html-h3 {
     -fx-font-size: 18;
-    -fx-fill: #333333;
+    -fx-fill: -monet-on-surface;
 }
 
 .html {
     -fx-font-size: 14;
-    -fx-fill: #555555;
+    -fx-fill: -monet-on-surface-variant;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Line Component                                                              *
+ * Line Component - Theme colors                                              *
  *                                                                             *
  ******************************************************************************/
 
 .line-component .title-label {
-    -fx-text-fill: #333333;
+    -fx-text-fill: -monet-on-surface;
 }
 
 .line-component .subtitle-label {
-    -fx-text-fill: #777777;
+    -fx-text-fill: -monet-on-surface-variant;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Installer Item                                                             *
+ * Installer Item                                                              *
  *                                                                             *
  ******************************************************************************/
 
 .installer-item-wrapper {
-    -fx-background-color: #F5F0EB;
+    -fx-background-color: -monet-surface-container-high;
     -fx-background-radius: 8;
-    -fx-border-color: #E0D5C5;
+    -fx-border-color: -monet-outline-variant;
     -fx-border-width: 1;
     -fx-border-radius: 8;
 }
@@ -784,55 +792,58 @@
 }
 
 .installer-item-wrapper .installer-item:list-item {
-    -fx-border-color: #E0D5C5;
+    -fx-border-color: -monet-outline-variant;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Hint Box                                                                    *
+ * Hint Box - Theme colors                                                    *
  *                                                                             *
  ******************************************************************************/
 
 .hint {
-    -fx-background-color: #F5F0EB;
-    -fx-border-color: #D0C5B4;
+    -fx-background-color: -monet-surface-container-high;
+    -fx-border-color: -monet-outline-variant;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
 }
 
 .hint Text,
 .hint .svg {
-    -fx-fill: #555555;
+    -fx-fill: -monet-on-surface-variant;
 }
 
 .hint.info {
-    -fx-background-color: rgba(139, 115, 85, 0.15);
-    -fx-border-color: #8B7355;
+    -fx-background-color: -monet-primary-container;
+    -fx-opacity: 0.3;
+    -fx-border-color: -monet-primary;
 }
 
 .hint.info Text,
 .hint.info .svg {
-    -fx-fill: #5A4D40;
+    -fx-fill: -monet-on-primary-container;
 }
 
 .hint.warning {
-    -fx-background-color: rgba(255, 180, 0, 0.15);
-    -fx-border-color: #FFB400;
+    -fx-background-color: -monet-tertiary-container;
+    -fx-opacity: 0.3;
+    -fx-border-color: -monet-tertiary;
 }
 
 .hint.warning Text,
 .hint.warning .svg {
-    -fx-fill: #996600;
+    -fx-fill: -monet-on-tertiary-container;
 }
 
 .hint.error {
-    -fx-background-color: rgba(211, 67, 54, 0.15);
-    -fx-border-color: #D34336;
+    -fx-background-color: -monet-error-container;
+    -fx-opacity: 0.3;
+    -fx-border-color: -monet-error;
 }
 
 .hint.error Text,
 .hint.error .svg {
-    -fx-fill: #A33028;
+    -fx-fill: -monet-on-error-container;
 }
 
 /*******************************************************************************
@@ -842,21 +853,21 @@
  ******************************************************************************/
 
 .notice-pane > .label {
-    -fx-text-fill: #333333;
+    -fx-text-fill: -monet-on-surface;
     -fx-font-size: 20;
 }
 
 /*******************************************************************************
  *                                                                             *
- * Code Box (for Microsoft Login)                                              *
+ * Code Box (for Microsoft Login)                                             *
  *                                                                             *
  ******************************************************************************/
 
 .code-box {
-    -fx-background-color: #E6D9C8;
+    -fx-background-color: -monet-secondary-container;
     -fx-background-radius: 8;
 }
 
 .code-box .code-label {
-    -fx-text-fill: #8B7355;
+    -fx-text-fill: -monet-primary;
 }
