@@ -18,10 +18,8 @@
 package org.jackhuang.hmcl.ui.main;
 
 import com.google.gson.*;
-import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.jackhuang.hmcl.Metadata;
 import org.jackhuang.hmcl.theme.Themes;
@@ -29,7 +27,9 @@ import org.jackhuang.hmcl.ui.FXUtils;
 import org.jackhuang.hmcl.ui.SVG;
 import org.jackhuang.hmcl.ui.WeakListenerHolder;
 import org.jackhuang.hmcl.ui.construct.ComponentList;
+import org.jackhuang.hmcl.ui.construct.ImageContainer;
 import org.jackhuang.hmcl.ui.construct.LineButton;
+import org.jackhuang.hmcl.ui.construct.SpinnerPane;
 import org.jackhuang.hmcl.util.gson.JsonUtils;
 
 import java.io.IOException;
@@ -38,11 +38,18 @@ import java.io.InputStream;
 import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
 import static org.jackhuang.hmcl.util.logging.Logger.LOG;
 
-public final class AboutPage extends StackPane {
+public final class AboutPage extends SpinnerPane {
 
     private final WeakListenerHolder holder = new WeakListenerHolder();
 
     public AboutPage() {
+        VBox content = new VBox();
+        content.getStyleClass().add("spinner-pane-content");
+        ScrollPane scrollPane = new ScrollPane(content);
+        scrollPane.setFitToWidth(true);
+        FXUtils.smoothScrolling(scrollPane);
+        setContent(scrollPane);
+
         ComponentList about = new ComponentList();
         {
             var launcher = LineButton.createExternalLinkButton(Metadata.PUBLISH_URL);
@@ -66,7 +73,7 @@ public final class AboutPage extends StackPane {
 
         ComponentList legal = new ComponentList();
         {
-            var copyright = LineButton.createExternalLinkButton(Metadata.ABOUT_URL);
+            var copyright = new LineButton();
             copyright.setLargeTitle(true);
             copyright.setTitle(i18n("about.copyright"));
             copyright.setSubtitle(i18n("about.copyright.statement"));
@@ -84,27 +91,16 @@ public final class AboutPage extends StackPane {
             legal.getContent().setAll(copyright, claim, openSource);
         }
 
-        VBox content = new VBox(16);
-        content.setPadding(new Insets(10));
         content.getChildren().setAll(
                 ComponentList.createComponentListTitle(i18n("about")),
                 about,
-
                 ComponentList.createComponentListTitle(i18n("about.thanks_to")),
                 thanks,
-
                 ComponentList.createComponentListTitle(i18n("about.dependency")),
                 deps,
-
                 ComponentList.createComponentListTitle(i18n("about.legal")),
                 legal
         );
-
-
-        ScrollPane scrollPane = new ScrollPane(content);
-        scrollPane.setFitToWidth(true);
-        FXUtils.smoothScrolling(scrollPane);
-        getChildren().setAll(scrollPane);
     }
 
     private static Image loadImage(String url) {
@@ -141,14 +137,17 @@ public final class AboutPage extends StackPane {
                 if (obj.has("image")) {
                     JsonElement image = obj.get("image");
                     if (image.isJsonPrimitive()) {
-                        button.setLeading(loadImage(image.getAsString()));
+                        var imageView = new ImageContainer(32, 32);
+                        imageView.setImage(loadImage(image.getAsString()));
+                        imageView.setMouseTransparent(true);
+
+
+                        button.setLeading(imageView);
                     } else if (image.isJsonObject()) {
-                        holder.add(FXUtils.onWeakChangeAndOperate(Themes.darkModeProperty(), darkMode -> {
-                            button.setLeading(darkMode
-                                    ? loadImage(image.getAsJsonObject().get("dark").getAsString())
-                                    : loadImage(image.getAsJsonObject().get("light").getAsString())
-                            );
-                        }));
+                        holder.add(FXUtils.onWeakChangeAndOperate(Themes.darkModeProperty(), darkMode -> button.setLeading(darkMode
+                                ? loadImage(image.getAsJsonObject().get("dark").getAsString())
+                                : loadImage(image.getAsJsonObject().get("light").getAsString())
+                        )));
                     }
                 }
 

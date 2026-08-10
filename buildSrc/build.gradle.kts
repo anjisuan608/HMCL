@@ -11,6 +11,8 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.jna)
     implementation(libs.kala.compress.tar)
+    implementation(libs.kala.compress.ar)
+    implementation(libs.weburl)
 }
 
 java {

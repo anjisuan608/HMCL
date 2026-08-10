@@ -29,8 +29,8 @@
 
 .scroll-bar .thumb {
     -fx-fill: -monet-surface-tint;
-    -fx-arc-width: 8;
-    -fx-arc-height: 8;
+    -fx-arc-width: 6;
+    -fx-arc-height: 6;
 }
 
 .title-label {
@@ -210,28 +210,28 @@
     -fx-padding: 0 0 0 0;
 }
 
-.profile-list-item > .rippler-container > BorderPane > .two-line-list-item > .first-line > .title {
+.game-directory-list-item > .rippler-container > BorderPane > .two-line-list-item > .first-line > .title {
     -fx-font-size: 13;
 }
 
-.profile-list-item > .rippler-container > BorderPane > .two-line-list-item > HBox > .subtitle {
+.game-directory-list-item > .rippler-container > BorderPane > .two-line-list-item > HBox > .subtitle {
     -fx-font-size: 10;
 }
 
-.profile-list-item > .rippler-container > BorderPane {
+.game-directory-list-item > .rippler-container > BorderPane {
     -fx-padding: 8 0 8 16;
 }
 
-.profile-list-item:selected > .rippler-container > BorderPane {
+.game-directory-list-item:selected > .rippler-container > BorderPane {
     -fx-background-color: -monet-secondary-container-transparent-50;
 }
 
-.profile-list-item:selected > .rippler-container > BorderPane > .two-line-list-item > .first-line > .title {
+.game-directory-list-item:selected > .rippler-container > BorderPane > .two-line-list-item > .first-line > .title {
     -fx-text-fill: -monet-on-secondary-container;
     -fx-font-weight: bold;
 }
 
-.profile-list-item:selected .svg {
+.game-directory-list-item:selected .svg {
     -fx-fill: -monet-on-secondary-container;
 }
 
@@ -396,6 +396,10 @@
     -fx-cursor: hand;
 }
 
+.installer-item-status:incompatible {
+    -fx-opacity: 0.6;
+}
+
 .installer-item-wrapper {
     -fx-background-color: -monet-surface;
     -fx-background-radius: 4;
@@ -414,7 +418,7 @@
 }
 
 .installer-item-wrapper .installer-item:list-item > .installer-item-name {
-    -fx-pref-width: 80px;
+    -fx-pref-width: 100px;
 }
 
 .installer-item-wrapper .installer-item:list-item > .installer-item-status {
@@ -448,16 +452,24 @@
 }
 
 .launch-pane > .jfx-button.launch-button {
-    -fx-max-width: 207px;
-    -fx-min-width: 207px;
+    -fx-max-width: 200px;
+    -fx-min-width: 200px;
     -fx-border-width: 0 3px 0 0;
-    -fx-border-color: -monet-on-surface-variant;
+    -fx-border-color: linear-gradient(
+        to bottom, 
+        transparent 0%, 
+        transparent 20%, 
+        -monet-on-surface-variant 20%,
+        -monet-on-surface-variant 80%,
+        transparent 80%, 
+        transparent 100%
+    );
     -fx-background-radius: 4px 0 0 4px;
 }
 
 .launch-pane > .jfx-button.menu-button {
-    -fx-max-width: 20px;
-    -fx-min-width: 20px;
+    -fx-max-width: 27px;
+    -fx-min-width: 27px;
     -fx-font-size: 15px;
     -fx-background-radius: 0 4px 4px 0;
 }
@@ -968,6 +980,10 @@
     -fx-padding: 0;
 }
 
+.no-padding .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-padding: 4 0 4 5;
+}
+
 .jfx-list-cell, .list-cell {
     -fx-background-color: transparent;
 }
@@ -1093,8 +1109,16 @@
     -fx-background-color: -monet-error-container;
 }
 
+.resource-pack-list-cell:warning {
+    -fx-background-color: -monet-error-container;
+}
+
+.multi-file-item {
+    -fx-padding: 10 0 10 0;
+}
+
 .options-sublist {
-    -fx-background-color: -monet-surface;
+    -fx-background-color: -monet-surface-container;
 }
 
 .options-list-item {
@@ -1103,6 +1127,14 @@
     -fx-border-width: 1 0 0 0;
     -fx-padding: 10 16 10 16;
     -fx-font-size: 12;
+}
+
+.options-sublist .options-list-item {
+    -fx-background-color: -monet-surface-container;
+}
+
+.options-sublist .multi-file-item {
+    -fx-padding: 10 10 10 10;
 }
 
 .options-list-item .svg {
@@ -1138,6 +1170,10 @@
 .options-list-item:first:last {
     -fx-background-radius: 4 4 4 4;
     -fx-border-width: 0;
+}
+
+.options-sublist-wrapper > .container {
+    -fx-background-color: -monet-surface-container;
 }
 
 .options-sublist-wrapper .expand-icon .svg {
@@ -1296,6 +1332,7 @@
     -fx-pref-height: -fx-toggle-icon-tiny-size;
     -fx-max-height: -fx-toggle-icon-tiny-size;
     -fx-min-height: -fx-toggle-icon-tiny-size;
+    -fx-padding: 0;
     -fx-background-radius: 25px;
     -fx-background-color: transparent;
     -jfx-toggle-color: -monet-primary;
@@ -1304,7 +1341,11 @@
 
 .toggle-icon-tiny .icon {
     -fx-fill: rgb(204.0, 204.0, 51.0);
-    -fx-padding: 5.0;
+    -fx-padding: 0;
+}
+
+.toggle-icon-tiny:overridden .svg {
+    -fx-fill: -monet-primary;
 }
 
 .toggle-icon-tiny .jfx-rippler {
@@ -1353,27 +1394,27 @@
 }
 
 .log-toggle.fatal {
-    -fx-background-color: -fixed-log-fatal;
+    -fx-background-color: -fixed-log-fatal-background;
 }
 
 .log-toggle.error {
-    -fx-background-color: -fixed-log-error;
+    -fx-background-color: -fixed-log-error-background;
 }
 
 .log-toggle.warn {
-    -fx-background-color: -fixed-log-warn;
+    -fx-background-color: -fixed-log-warn-background;
 }
 
 .log-toggle.info {
-    -fx-background-color: -fixed-log-info;
+    -fx-background-color: -fixed-log-info-background;
 }
 
 .log-toggle.debug {
-    -fx-background-color: -fixed-log-debug;
+    -fx-background-color: -fixed-log-debug-background;
 }
 
 .log-toggle.trace {
-    -fx-background-color: -fixed-log-trace;
+    -fx-background-color: -fixed-log-trace-background;
 }
 
 .log-window-list-cell:selected {
@@ -1381,7 +1422,7 @@
 }
 
 .log-window {
-    -fx-background-color: -monet-surface-container;
+    -fx-background-color: -fixed-log-background;
 }
 
 .log-window .scroll-bar .thumb {
@@ -1404,42 +1445,52 @@
 
 .log-window-list-cell:fatal {
     -fx-text-fill: -fixed-log-text-fill;
-    -fx-background-color: -fixed-log-fatal;
+    -fx-background-color: -fixed-log-fatal-background;
 }
 
 .log-window-list-cell:error {
-    -fx-text-fill: -fixed-log-text-fill;
-    -fx-background-color: -fixed-log-error;
+    -fx-text-fill: -fixed-log-error-text-fill;
+    -fx-background-color: -fixed-log-error-background;
 }
 
 .log-window-list-cell:warn {
-    -fx-text-fill: -fixed-log-text-fill;
-    -fx-background-color: -fixed-log-warn;
+    -fx-text-fill: -fixed-log-warn-text-fill;
+    -fx-background-color: -fixed-log-warn-background;
 }
 
 .log-window-list-cell:info {
     -fx-text-fill: -fixed-log-text-fill;
-    -fx-background-color: -fixed-log-info;
+    -fx-background-color: -fixed-log-info-background;
 }
 
 .log-window-list-cell {
-    -fx-background-color: -fixed-log-info;
+    -fx-background-color: -fixed-log-info-background;
 }
 
 .log-window-list-cell:debug {
     -fx-text-fill: -fixed-log-text-fill;
-    -fx-background-color: -fixed-log-debug;
+    -fx-background-color: -fixed-log-debug-background;
 }
 
 .log-window-list-cell:trace {
     -fx-text-fill: -fixed-log-text-fill;
-    -fx-background-color: -fixed-log-trace;
+    -fx-background-color: -fixed-log-trace-background;
 }
 
 .log-window-list-cell:selected {
     -fx-text-fill: -fixed-log-text-fill;
     -fx-background-color: -fixed-log-selected;
 }
+
+.log-window .always-on-top-button {
+    -fx-rotate: 0.0;
+}
+
+.log-window .always-on-top-button:selected {
+    -fx-background-color: -monet-secondary-container-transparent-80;
+    -fx-rotate: 45.0;
+}
+
 
 /*******************************************************************************
 *                                                                              *
@@ -1463,6 +1514,11 @@
     -jfx-radius: 9;
 }
 
+.spinner-pane .spinner-pane-content {
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+}
+
 /*******************************************************************************
 *                                                                              *
 * JFX Combo Box                                                                *
@@ -1475,6 +1531,11 @@
     -fx-background-color: -monet-surface-container-highest;
     -fx-padding: 4;
     -fx-max-width: 1000000000;
+}
+
+.jfx-combo-box .arrow {
+    -fx-background-color: -monet-on-surface-variant;
+    -fx-shape: "M12 15 7 10H17L12 15Z";
 }
 
 .jfx-combo-box .text {
@@ -1492,6 +1553,7 @@
 .combo-box-popup .list-view .jfx-list-cell {
     -fx-background-color: -monet-surface-container;
     -fx-text-fill: -monet-on-surface;
+    -fx-cursor: hand;
     -fx-background-insets: 0.0;
 }
 
@@ -1499,6 +1561,10 @@
 .combo-box-popup .list-view .list-cell:even:selected > .jfx-rippler > StackPane {
     -fx-background-color: -monet-secondary-container;
     -fx-text-fill: -monet-on-secondary-container;
+}
+
+.combo-box-popup .list-view .list-cell:hover > .jfx-rippler > StackPane {
+    -fx-background-color: -monet-secondary-container-transparent-50;
 }
 
 .jfx-combo-box-warning {
@@ -1527,7 +1593,7 @@
     -fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
     -fx-background-radius: 3px;
     -fx-background-insets: 0px;
-    -fx-min-height: 25px;
+    -fx-min-height: 36px;
 }
 
 .color-palette-region {
@@ -1563,6 +1629,21 @@
 
 .custom-color-dialog .tab-selected-line {
     -fx-background-color: -monet-on-surface;
+}
+
+.custom-color-dialog .jfx-color-dialog-actions {
+    -fx-background-color: -monet-surface;
+    -fx-padding: 0.0 10.0 5.0 0.0;
+    -fx-alignment: center-right;
+}
+
+.custom-color-dialog .jfx-color-dialog-accept {
+    -fx-padding: 0.7em 0.8em;
+}
+
+.custom-color-dialog .jfx-color-dialog-cancel {
+    -fx-text-fill: -monet-on-surface-variant;
+    -fx-padding: 0.7em 0.8em;
 }
 
 /*******************************************************************************
@@ -1679,11 +1760,6 @@
 
 .jfx-decorator-title {
     -fx-font-size: 14;
-}
-
-.window {
-    -fx-background-color: transparent;
-    -fx-padding: 8;
 }
 
 .debug-border {
@@ -1847,6 +1923,15 @@
     -fx-font-style: italic;
 }
 
+.html-code {
+    -fx-font-size: 15;
+}
+
+.html .separator > .line {
+    -fx-border-color: -monet-outline-variant;
+    -fx-border-width: 0.5;
+}
+
 /*******************************************************************************
  *                                                                             *
  * Tooltip                                                                     *
@@ -1923,4 +2008,54 @@
 
 .line-toggle-button .jfx-toggle-button {
     -fx-padding: 0;
+}
+
+.update-pane:active .subtitle-label {
+    -fx-text-fill: -monet-tertiary;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Mod Changelog                                                               *
+ *                                                                             *
+ ******************************************************************************/
+
+.addon-changelog {
+    -fx-background-color: -monet-surface;
+    -fx-background-radius: 4;
+    -fx-padding: 10;
+    -fx-font-size: 12;
+    -fx-text-fill: -monet-on-surface;
+    -fx-line-spacing: 2;
+}
+
+.addon-changelog .html {
+    -fx-font-size: 12;
+}
+
+.addon-changelog .html-h1 {
+    -fx-font-size: 16.5;
+}
+
+.addon-changelog .html-h2 {
+    -fx-font-size: 15;
+}
+
+.addon-changelog .html-h3 {
+    -fx-font-size: 13.5;
+}
+
+.addon-changelog .html-code {
+    -fx-font-size: 11.25;
+}
+
+.addon-changelog .html-code-block {
+    -fx-padding: 0 3 0 3;
+    -fx-background-radius: 5;
+    /* Should be -monet-surface-bright in dark mode and -dim in light mode, however that's not supported */
+    -fx-background-color: -monet-surface-container;
+}
+
+.addon-changelog-table-cell {
+    -fx-text-fill: -monet-primary;
 }
